@@ -26,6 +26,16 @@ RSpec.describe 'Search', type: :feature do
   it 'can search for foods' do
     expect(current_path).to eq('/foods')
 
-    expect(page).to have_content('Total Results: 44128')
+    expect(page).to have_content('Here are the first 10 results for sweet potatoes')
+  end
+
+  it 'expect page to have food attributes' do
+
+    within '#food-728229015529' do
+      expect(page).to have_content('Description: SWEETS MEDLEY')
+      expect(page).to have_content('GTIN/UPC code: 728229015529')
+      expect(page).to have_content('Brand Owner: The Hain Celestial Group, Inc.')
+      expect(page).to have_content('Ingredients: A BLEND OF SWEET POTATOES (SWEET POTATO, PURPLE SWEET POTATO, BATATA), AVOCADO OIL, SEA SALT.')
+    end
   end
 end
