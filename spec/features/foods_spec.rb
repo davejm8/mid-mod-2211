@@ -29,13 +29,25 @@ RSpec.describe 'Search', type: :feature do
     expect(page).to have_content('Here are the first 10 results for sweet potatoes')
   end
 
+  it 'expect page to have total hits' do
+    expect(page).to have_content('Total hits: 38114')
+  end
+
   it 'expect page to have food attributes' do
 
     within '#food-728229015529' do
+
       expect(page).to have_content('Description: SWEETS MEDLEY')
       expect(page).to have_content('GTIN/UPC code: 728229015529')
       expect(page).to have_content('Brand Owner: The Hain Celestial Group, Inc.')
       expect(page).to have_content('Ingredients: A BLEND OF SWEET POTATOES (SWEET POTATO, PURPLE SWEET POTATO, BATATA), AVOCADO OIL, SEA SALT.')
+    end
+
+    within '#food-8809069966485' do
+      expect(page).to have_content('Description: SEASONED VEGETABLE POWDER')
+      expect(page).to have_content('GTIN/UPC code: 8809069966485')
+      expect(page).to have_content('Brand Owner: WANG')
+      expect(page).to have_content('Ingredients: VEGETABLE FLAKE: {PURPLE SWEET POTATO FLAKE (PURPLE SWEET POTATO, SWEET POTATO STARCH), POTATO FLAKE (POTATO, SWEET POTATO STARCH), CARROT FLAKE (CARROT), SWEET PUMPKIN FLAKE(SWEET PUMPKIN)}, SMOKED SALMON (SALMON, SALT), DRIED SEAWEED, BROWN RICE OIL, SESAME, ORGANIC SUGAR, SALT.')
     end
   end
 end
